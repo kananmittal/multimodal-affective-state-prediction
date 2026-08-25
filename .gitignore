@@ -1,0 +1,59 @@
+# ---------------------------------------------------------------------------
+# Model weights & checkpoints
+# Trained AER weights (e.g. aer_cultural_mixed_epoch_9.pt, ~382 MB) exceed
+# GitHub's 100 MB per-file limit. They are distributed out-of-band; see README.
+# ---------------------------------------------------------------------------
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+
+# Offline model snapshots pulled down for the VER demos
+paligemma_offline/
+*_offline/
+
+# ---------------------------------------------------------------------------
+# Datasets, manifests and captured sessions (large / redistribution-restricted)
+# ---------------------------------------------------------------------------
+data/raw/
+data/processed/
+datasets/
+session_data/
+*.csv
+
+# Local audio/media test fixtures
+*.wav
+*.mp3
+*.flac
+!VER/Video/*.mp4
+
+# ---------------------------------------------------------------------------
+# Secrets — never commit
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.env
+**/.env
+*credentials*
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Tooling / OS
+# ---------------------------------------------------------------------------
+.DS_Store
+.vscode/
+.idea/
+*.log
+.output/
