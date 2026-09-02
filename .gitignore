@@ -22,6 +22,9 @@ datasets/
 session_data/
 *.csv
 
+# Annotated frames + results.jsonl emitted by the VER local runners
+VER/runs/
+
 # Local audio/media test fixtures
 *.wav
 *.mp3
