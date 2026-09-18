@@ -20,7 +20,11 @@ EMOTION_MAP = {
 }
 
 def load_and_preprocess_audio(file_path):
-    waveform, sample_rate = torchaudio.load(file_path)
+    import soundfile as sf
+    data, sample_rate = sf.read(file_path, dtype="float32")
+    waveform = torch.from_numpy(data)
+    waveform = waveform.unsqueeze(0) if waveform.ndim == 1 else waveform.T
+
     if sample_rate != config.target_sample_rate:
         resampler = torchaudio.transforms.Resample(orig_freq=sample_rate, new_freq=config.target_sample_rate)
         waveform = resampler(waveform)

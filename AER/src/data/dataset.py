@@ -24,7 +24,10 @@ class AudioEmotionDataset(Dataset):
         
     def __getitem__(self, idx):
         path = str(self.file_paths[idx])
-        waveform, sample_rate = torchaudio.load(path)
+        import soundfile as sf
+        data, sample_rate = sf.read(path, dtype="float32")
+        waveform = torch.from_numpy(data)
+        waveform = waveform.unsqueeze(0) if waveform.ndim == 1 else waveform.T
         
         # Enforce 16kHz resample
         if sample_rate != self.target_sample_rate:
